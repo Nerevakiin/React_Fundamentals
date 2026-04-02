@@ -5,25 +5,32 @@
 body {
     margin: 0;
     background-color: #282D35;
+    font-family: Inter, sans-serif;
 }
+
+header {
+    height: 90px;
+    background-color: #21222A;
+    padding: 20px 0;
+}
+
 
 nav {
     display: flex;
     align-items: center;
-    border: black solid 1px;
-    background-color: #21222A;
-    padding: 10px 0;
+    height: 100%;
     
 }
 
 span {
     color: #61DAFB;
-    font-weight: bold;
-    
+    font-weight: 700;
+    font-size: 1.4rem;
 }
 
 .logo {
-    width: 30px;
-    margin: 10px;
+    width: 40px;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
