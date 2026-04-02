@@ -6,6 +6,7 @@ body {
     margin: 0;
     background-color: #282D35;
     font-family: Inter, sans-serif;
+    color: white;
 }
 
 header {
@@ -35,13 +36,28 @@ span {
 }
 
 main {
-    color: white;
+    padding: 60px 30px;
+    background-image: url("../reactjs-icon 2.png");
+    background-repeat: no-repeat;
+    background-position: right 70%;
 }
 
 main > h1 {
-    margin-left: 20px;
+    margin: 0;
+    font-size: 2.4rem;
+}
+
+ul {
+    margin-top: 46px;
+
 }
 
 li {
-    margin: 10px;
+    padding-block: 10px;
+    line-height: 19px;
+}
+
+li::marker {
+    color: #61DAFB;
+    font-size: 1.5rem;
 }
