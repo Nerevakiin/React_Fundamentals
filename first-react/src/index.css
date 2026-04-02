@@ -34,3 +34,14 @@ span {
     margin-right: 10px;
 }
 
+main {
+    color: white;
+}
+
+main > h1 {
+    margin-left: 20px;
+}
+
+li {
+    margin: 10px;
+}
