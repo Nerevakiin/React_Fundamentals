@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Entry from './components/Entry'
 
 
 
@@ -7,7 +8,10 @@ export default function App() {
   return(
     <>
       <Header />
-      <h1>This is the Main App component</h1>
+      <main className="container">
+        <Entry />
+      </main>
+      
     </>
   )
 }
