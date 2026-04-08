@@ -3,7 +3,7 @@ export default function Header() {
         <>
             <header>
                 <img src="./globe.png" alt="globe" />
-                <span>my travel journal.</span>
+                <span>my travel journal</span>
             </header>
         </>
     )
