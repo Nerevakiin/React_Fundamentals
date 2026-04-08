@@ -12,9 +12,8 @@ export default function Entry(props) {
                 <span className="country">{props.country}</span>
                 <a href={props.googleMapsLink} target="_blank">View on Google Maps</a>
                 <h2>{props.destination}</h2>
-                <p>{props.date}</p>
-                <p>Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). 
-                    Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists.</p>
+                <p>{props.dates}</p>
+                <p>{props.description}</p>
             </div>
             
         </article>
