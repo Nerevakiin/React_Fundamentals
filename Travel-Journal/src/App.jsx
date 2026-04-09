@@ -15,8 +15,10 @@ export default function App() {
                 // googleMapsLink={entry.googleMapsLink}
                 // dates={entry.dates}
                 // text={entry.text}
-                // all above can be replaced with the following if tweaked in the Entry.jsx component properly
+                // === all above can be replaced with the following if tweaked in the Entry.jsx component properly ===
                 entry = {entry}
+                // === Alternatively, without the .entry tweaking of Entry.jsx we can use the following: ===
+                // {...entry}
             />
         )
     })
