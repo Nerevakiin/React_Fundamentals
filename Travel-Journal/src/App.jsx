@@ -17,7 +17,7 @@ export default function App() {
                 // text={entry.text}
                 // === all above can be replaced with the following if tweaked in the Entry.jsx component properly ===
                 entry = {entry}
-                // === Alternatively, without the .entry tweaking of Entry.jsx we can use the following: ===
+                // === Alternatively, without the .entry tweaking of Entry.jsx we can use the following: ====
                 // {...entry}
             />
         )
