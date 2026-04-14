@@ -19,6 +19,7 @@ export default function Entry(props) {
                 <h2 className="entry-title">{props.entry.title}</h2>
                 <p className="trip-dates">{props.entry.dates}</p>
                 <p className="entry-text">{props.entry.text}</p>
+                <p>test</p>
             </div>
             
         </article>
