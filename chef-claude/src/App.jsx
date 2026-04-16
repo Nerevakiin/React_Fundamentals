@@ -1,10 +1,11 @@
 import Header from './Header.jsx'
+import Main from './Main.jsx'
 
 export default function App() {
   return (
     <>
       <Header />
-      <h1>Hello world!</h1>
+      <Main />
     </>
   )
 }
