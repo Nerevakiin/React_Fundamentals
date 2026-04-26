@@ -1,13 +1,13 @@
 import React from 'react'
 import ClaudeRecipe from './components/ClaudeRecipe.jsx'
 import IngredientsList from './components/IngredientsList.jsx'
+// import getRecipeFromChefClaude from './ai.js'
 
 export default function Main() {
 
 
     const [ingredients, setIngredients] = React.useState([])
 
-    
 
     const [recipeShown, setRecipeShown] = React.useState(false)
 
@@ -34,6 +34,9 @@ export default function Main() {
                 <button>Add ingredient</button>
             </form>
 
+            
+            
+            
             {ingredients.length > 0 && 
             <IngredientsList
                 ingredients={ingredients}
