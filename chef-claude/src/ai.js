@@ -11,7 +11,7 @@ easier to render to a web page.
 `
 
 const anthropic = new Anthropic({
-    apiKey: import.meta.env.ANTHROPIC_API_KEY,
+    apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
     dangerouslyAllowBrowser: true // === IMPORTANT!! CHANGE THIS BEFORE DEPLOYING !! ===
 })
 
