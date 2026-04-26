@@ -27,3 +27,5 @@ vite.config.js
 *.sw?
 
 .env
+.env.local
+.env.*.local
