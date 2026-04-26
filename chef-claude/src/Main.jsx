@@ -2,12 +2,13 @@ import React from 'react'
 import ClaudeRecipe from './components/ClaudeRecipe.jsx'
 import IngredientsList from './components/IngredientsList.jsx'
 import { getRecipeFromChefClaude } from './ai.js'
+import ReactMarkdown from 'react-markdown'
 // import getRecipeFromChefClaude from './ai.js'
 
 export default function Main() {
 
 
-    const [ingredients, setIngredients] = React.useState(["all the main spices", "pasta", "ground beef", "tomato paste"])
+    const [ingredients, setIngredients] = React.useState([])
 
     const [recipe, setRecipe] = React.useState("")
 
