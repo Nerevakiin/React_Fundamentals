@@ -9,14 +9,14 @@ export default function Main() {
 
     const [ingredients, setIngredients] = React.useState(["all the main spices", "pasta", "ground beef", "tomato paste"])
 
-    const [recipeShown, setRecipeShown] = React.useState(false)
+    const [recipe, setRecipe] = React.useState("")
 
     
     async function getRecipe() {
         
         const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
 
-        console.log(recipeMarkdown)
+        setRecipe(recipeMarkdown)
 
 
     }
@@ -53,7 +53,7 @@ export default function Main() {
             
             
             
-            {recipeShown && <ClaudeRecipe />}
+            {recipe && <ClaudeRecipe recipe={recipe} />}
 
 
 
