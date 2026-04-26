@@ -1,6 +1,3 @@
-
-
-
 export default function IngredientsList(props) {
 
     const ingredientsListItems = props.ingredients.map(ingredient => (

@@ -2,11 +2,10 @@ import React from 'react'
 import ClaudeRecipe from './components/ClaudeRecipe.jsx'
 import IngredientsList from './components/IngredientsList.jsx'
 import { getRecipeFromChefClaude } from './ai.js'
-import ReactMarkdown from 'react-markdown'
+
 // import getRecipeFromChefClaude from './ai.js'
 
 export default function Main() {
-
 
     const [ingredients, setIngredients] = React.useState([])
 
@@ -16,12 +15,9 @@ export default function Main() {
     async function getRecipe() {
         
         const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
-
         setRecipe(recipeMarkdown)
 
-
     }
-
 
     
     function addIngredient(formData) {
@@ -41,8 +37,6 @@ export default function Main() {
                 />
                 <button>Add ingredient</button>
             </form>
-
-            
             
             
             {ingredients.length > 0 && 
@@ -52,11 +46,7 @@ export default function Main() {
             />}
             
             
-            
-            
             {recipe && <ClaudeRecipe recipe={recipe} />}
-
-
 
 
         </main>
