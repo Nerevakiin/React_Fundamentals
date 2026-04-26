@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
 // import {query} from '@qwen-code/sdk'
-import dotenv from 'dotenv'
+
 
 
 const SYSTEM_PROMPT = `
