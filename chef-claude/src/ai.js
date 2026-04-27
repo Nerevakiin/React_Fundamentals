@@ -35,11 +35,11 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
 
 
 const qwen = new QWEN({
-    apiKey: process.env.QWEN_API_KEY,
+    apiKey: import.meta.env.VITE_QWEN_API_KEY,
     dangerouslyAllowBrowser: true 
 })
 
-export async function getRecipeFrom Qwen(ingredientsArr) {
+export async function getRecipeFromQwen(ingredientsArr) {
     const ingredientsString = ingredientsArr.join(", ")
 
     try {
