@@ -34,30 +34,30 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
 }
 
 
-const qwen = new QWEN({
-    apiKey: import.meta.env.VITE_QWEN_API_KEY,
-    dangerouslyAllowBrowser: true 
-})
+// const qwen = new QWEN({
+//     apiKey: import.meta.env.VITE_QWEN_API_KEY,
+//     dangerouslyAllowBrowser: true 
+// })
 
-export async function getRecipeFromQwen(ingredientsArr) {
-    const ingredientsString = ingredientsArr.join(", ")
+// export async function getRecipeFromQwen(ingredientsArr) {
+//     const ingredientsString = ingredientsArr.join(", ")
 
-    try {
+//     try {
         
-        const response = query({
-            prompt: SYSTEM_PROMPT,
-            messages: [
-                {role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!`},
-            ]
+//         const response = query({
+//             prompt: SYSTEM_PROMPT,
+//             messages: [
+//                 {role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!`},
+//             ]
 
-        })
+//         })
 
-        return response.content[0].text 
+//         return response.content[0].text 
 
 
-    } catch (err) {
-        console.error(err.messages)
-    }
-}
+//     } catch (err) {
+//         console.error(err.messages)
+//     }
+// }
 
 
