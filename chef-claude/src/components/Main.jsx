@@ -1,7 +1,7 @@
 import React from 'react'
 import ClaudeRecipe from './ClaudeRecipe.jsx'
 import IngredientsList from './IngredientsList.jsx'
-import { getRecipeFromChefClaude } from '../ai.js'
+import { getRecipeFromChefClaude } from '../../ai.js'
 
 // import getRecipeFromChefClaude from './ai.js'
 
