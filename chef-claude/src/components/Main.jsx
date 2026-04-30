@@ -1,7 +1,7 @@
 import React from 'react'
-import ClaudeRecipe from './components/ClaudeRecipe.jsx'
-import IngredientsList from './components/IngredientsList.jsx'
-import { getRecipeFromChefClaude } from './ai.js'
+import ClaudeRecipe from './ClaudeRecipe.jsx'
+import IngredientsList from './IngredientsList.jsx'
+import { getRecipeFromChefClaude } from '../ai.js'
 
 // import getRecipeFromChefClaude from './ai.js'
 
@@ -10,6 +10,8 @@ export default function Main() {
     const [ingredients, setIngredients] = React.useState([])
 
     const [recipe, setRecipe] = React.useState("")
+
+    const recipeSection = React.useRef(null)
 
     
     async function getRecipe() {
@@ -41,6 +43,7 @@ export default function Main() {
             
             {ingredients.length > 0 && 
             <IngredientsList
+                ref={recipeSection}
                 ingredients={ingredients}
                 getRecipe={getRecipe}
             />}
