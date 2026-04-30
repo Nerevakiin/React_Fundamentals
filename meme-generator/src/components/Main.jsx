@@ -27,11 +27,12 @@ export default function Main() {
         }))
     }
 
-
+    
     
 
     function getRandomMeme() {
-        const randomNumber = Math.floor(Math.random(allMemes.length))
+        const randomNumber = Math.floor(Math.random() * allMemes.length)
+        console.log(randomNumber)
         const randomMeme = allMemes[randomNumber].url
 
         console.log(randomMeme)
