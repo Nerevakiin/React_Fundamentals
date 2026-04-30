@@ -27,6 +27,23 @@ export default function Main() {
         }))
     }
 
+
+    
+
+    function getRandomMeme() {
+        const randomNumber = Math.floor(Math.random(allMemes.length))
+        const randomMeme = allMemes[randomNumber].url
+
+        console.log(randomMeme)
+        
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            imgUrl: randomMeme
+        }))
+
+    }
+
+
     return (
         <main>
             <div className="form">
@@ -49,7 +66,7 @@ export default function Main() {
                         value={meme.bottomText}
                     />
                 </label>
-                <button>Get a new meme image 🖼</button>
+                <button onClick={getRandomMeme}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
                 <img src={meme.imgUrl} />
