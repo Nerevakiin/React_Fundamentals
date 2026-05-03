@@ -13,7 +13,7 @@ export default function App() {
     for (let i = 0; i < 10; i++) {
       const randomNumber = {
         value: Math.ceil(Math.random() * 6),
-        isHeld: false,
+        isHeld: true,
         id: nanoid()
       }
       newDice.push(randomNumber)
@@ -22,12 +22,14 @@ export default function App() {
     return newDice
   }
 
-  console.log(generateAllNewDice())
 
 
   const [dice, setDice] = useState(generateAllNewDice())
 
-  const diceElements = dice.map(dieObj => <Die key={dieObj.id} value={dieObj.value} />)
+  const diceElements = dice.map(dieObj => <Die key={dieObj.id} value={dieObj.value} isHeld={dieObj.isHeld} />)
+
+
+
 
   function rollDice() {
     setDice(generateAllNewDice())
