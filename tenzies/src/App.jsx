@@ -13,7 +13,7 @@ export default function App() {
     for (let i = 0; i < 10; i++) {
       const randomNumber = {
         value: Math.ceil(Math.random() * 6),
-        isHeld: true,
+        isHeld: false,
         id: nanoid()
       }
       newDice.push(randomNumber)
@@ -27,14 +27,7 @@ export default function App() {
   const [dice, setDice] = useState(generateAllNewDice())
 
   
-  function hold(id) {
-    console.log(id)
-    setDice(oldDice => {
-      return oldDice.map(die => {
-        return die.id === id ? {...die, isHeld: !die.isHeld} : die
-      })
-    })
-  }
+
 
   const diceElements = dice.map(dieObj => <Die 
       key={dieObj.id} 
@@ -49,7 +42,19 @@ export default function App() {
 
 
   function rollDice() {
-    setDice(generateAllNewDice())
+    // setDice(generateAllNewDice())
+    setDice(oldRoll => oldRoll.map(roll => {
+      return roll.isHeld ? roll : {...roll, value: Math.ceil(Math.random() * 6)}
+    }))
+  }
+
+
+    function hold(id) {
+    setDice(oldDice => {
+      return oldDice.map(die => {
+        return die.id === id ? {...die, isHeld: !die.isHeld} : die
+      })
+    })
   }
 
 
