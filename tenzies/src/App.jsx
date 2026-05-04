@@ -27,6 +27,15 @@ export default function App() {
   const [dice, setDice] = useState(generateAllNewDice())
 
 
+  // create the winning conditions
+  if(
+    dice.every(die => die.isHeld) &&
+    dice.every(die => die.value === dice[0].value)
+  ) {
+    console.log("Game won!")
+  }
+
+
 
 
   const diceElements = dice.map(dieObj => <Die
