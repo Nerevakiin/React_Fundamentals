@@ -59,14 +59,17 @@ export default function App() {
 
 
   function rollDice() {
-    // setDice(generateAllNewDice())
-    setDice(oldRoll => oldRoll.map(roll => {
-      return roll.isHeld ? roll : { ...roll, value: Math.ceil(Math.random() * 6) }
-    }))
+    if (!gameWon) {
+      setDice(oldRoll => oldRoll.map(roll => {
+        return roll.isHeld ? roll : { ...roll, value: Math.ceil(Math.random() * 6) }
+      }))
+    } else {
+      setDice(generateAllNewDice())
+    }
   }
 
 
-  
+
   function hold(id) {
     setDice(oldDice => {
       return oldDice.map(die => {
