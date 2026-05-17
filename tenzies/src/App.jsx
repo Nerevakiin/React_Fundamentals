@@ -7,6 +7,7 @@ import Confetti from 'react-confetti'
 
 export default function App() {
 
+  const [dice, setDice] = useState(generateAllNewDice())
 
   function generateAllNewDice() {
 
@@ -26,16 +27,11 @@ export default function App() {
 
 
 
-  const [dice, setDice] = useState(generateAllNewDice())
-
-
-
-
-
   // create the winning conditions
 
   let gameWon = false
-  if(
+
+  if (
     dice.every(die => die.isHeld) &&
     dice.every(die => die.value === dice[0].value)
   ) {
@@ -46,10 +42,7 @@ export default function App() {
   // Another way the entire code above can be written but too complicated for my stupid brain right now 
   // const gameWon = dice.every(die => die.isHeld) && 
   //      dice.every(die => die.value === dice[0].value)
-  
 
-
-  
 
 
 
@@ -65,7 +58,6 @@ export default function App() {
 
 
 
-
   function rollDice() {
     // setDice(generateAllNewDice())
     setDice(oldRoll => oldRoll.map(roll => {
@@ -74,6 +66,7 @@ export default function App() {
   }
 
 
+  
   function hold(id) {
     setDice(oldDice => {
       return oldDice.map(die => {
