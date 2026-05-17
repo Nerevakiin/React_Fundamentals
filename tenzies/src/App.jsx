@@ -57,7 +57,6 @@ export default function App() {
 
 
 
-
   const diceElements = dice.map(dieObj => <Die
     key={dieObj.id}
     value={dieObj.value}
