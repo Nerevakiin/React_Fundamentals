@@ -28,12 +28,20 @@ export default function App() {
 
 
   // create the winning conditions
+
+  let gameWon = false
   if(
     dice.every(die => die.isHeld) &&
     dice.every(die => die.value === dice[0].value)
   ) {
     console.log("Game won!")
+    gameWon = true
   }
+
+  // Another way the entire code above can be written but too complicated for my stupid brain right now 
+  // const gameWon = dice.every(die => die.isHeld) && 
+  //      dice.every(die => die.value === dice[0].value)
+  
 
 
 
