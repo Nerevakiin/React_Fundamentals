@@ -1,6 +1,6 @@
 
 import Die from './Die.jsx'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 // import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
@@ -42,6 +42,17 @@ export default function App() {
   // Another way the entire code above can be written but too complicated for my stupid brain right now 
   // const gameWon = dice.every(die => die.isHeld) && 
   //      dice.every(die => die.value === dice[0].value)
+
+
+  // Focus the button key when the game is won
+  const buttonRef = useRef(null)
+
+  useEffect(() => {
+    if (gameWon){
+      buttonRef.current.focus()
+    }
+  }, [gameWon])
+
 
 
 
