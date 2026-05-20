@@ -22,9 +22,9 @@ export default function AssemblyEndgame() {
     const [currentWord, setCurrentWord] = React.useState("react")
 
     // transform the string into an array and then map it and return the display of each letter
-    const letterElements = currentWord.split('').map((letter) => {
+    const letterElements = currentWord.split('').map((letter, index) => {
         return (
-            <span>{letter}</span>
+            <span key={index}>{letter.toUpperCase()}</span>
         )
     })
 
