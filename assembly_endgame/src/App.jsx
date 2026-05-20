@@ -3,6 +3,10 @@ import React from "react"
 
 
 export default function AssemblyEndgame() {
+    
+    
+    
+    
     return (
         <main>
             <header>
@@ -13,6 +17,10 @@ export default function AssemblyEndgame() {
             <section className="game-status">
                 <h2>You Win!</h2>
                 <p>Well done! 🎉</p>
+            </section>
+
+            <section>
+
             </section>
         </main>
     )
