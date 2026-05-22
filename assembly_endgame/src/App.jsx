@@ -5,6 +5,8 @@ import { languages } from "./languages.js"
 
 export default function AssemblyEndgame() {
 
+    
+    // map over the array and apply correct styling
     const languageArray = languages.map((language) => {
 
         const styles = {
