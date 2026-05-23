@@ -36,7 +36,7 @@ export default function AssemblyEndgame() {
     const keyboardElements = alphabet.split('').map(letter => (
         
         <button
-        onClick={() => addGuessedLetter(letter)}
+        onClick={() => addGuessedLetter(letter)} // ΤΑΚΕ Α GOOD LOOK AT THIS!
         key={letter}>
             {letter.toUpperCase()}
         </button>
@@ -47,9 +47,19 @@ export default function AssemblyEndgame() {
     // Set the state for the guessed letters
     const [guessedLetters, setGuessedLetters] = React.useState([])
 
+    // OnClick function that gets called by pressing the button with a callback function (see above)
     function addGuessedLetter(letter) {
-        setGuessedLetters(prevLetter => [...prevLetter, letter])
+        setGuessedLetters(prevLetters => 
+           
+           // If the letter has already been clicked and belongs in the array, dont add it.
+            prevLetters.includes(letter) ?
+                prevLetters :
+                [...prevLetters, letter])
+
+        
     }
+
+    console.log(guessedLetters)
 
 
 
