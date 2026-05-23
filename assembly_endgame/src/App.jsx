@@ -34,8 +34,23 @@ export default function AssemblyEndgame() {
     // create the keyboard and show it
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     const keyboardElements = alphabet.split('').map(letter => (
-        <button key={letter}>{letter.toUpperCase()}</button>
+        
+        <button
+        onClick={() => addGuessedLetter(letter)}
+        key={letter}>
+            {letter.toUpperCase()}
+        </button>
     ))
+
+
+
+    // Set the state for the guessed letters
+    const [guessedLetters, setGuessedLetters] = React.useState([])
+
+    function addGuessedLetter(letter) {
+        setGuessedLetters(prevLetter => [...prevLetter, letter])
+    }
+
 
 
     return (
