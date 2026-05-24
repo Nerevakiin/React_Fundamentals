@@ -7,8 +7,27 @@ import { clsx } from 'clsx';
 export default function AssemblyEndgame() {
 
 
+    // ============ State values ============
+    // Set the state for the current word
+    const [currentWord, setCurrentWord] = React.useState("react")
+
+    // Set the state for the guessed letters
+    const [guessedLetters, setGuessedLetters] = React.useState([])
+
+
+
+
+
+    // ============ Static values ============
+    // ============ Derived values ============
+    const wrongGuessCount = guessedLetters.filter((letter => !currentWord.includes(letter))).length
+    console.log(wrongGuessCount)
+
+
     // map over the array and apply correct styling
-    const languageArray = languages.map((language) => {
+    const languageArray = languages.map((language, index) => {
+
+        const isLanguageLost = index < wrongGuessCount
 
         const styles = {
             backgroundColor: language.backgroundColor,
@@ -16,16 +35,17 @@ export default function AssemblyEndgame() {
         }
 
         return (
-            <span style={styles} className="language-element" key={language.name}>{language.name}</span>
+            <span
+                style={styles}
+                className={`language-element ${isLanguageLost ? "lost" : ""}`}
+                key={language.name}
+            >
+                {language.name}
+            </span>
         )
     })
 
 
-    // Set the state for the current word
-    const [currentWord, setCurrentWord] = React.useState("react")
-
-    // Set the state for the guessed letters
-    const [guessedLetters, setGuessedLetters] = React.useState([])
 
     // OnClick function that gets called by pressing the button with a callback function (see above)
     function addGuessedLetter(letter) {
@@ -40,7 +60,7 @@ export default function AssemblyEndgame() {
     // transform the string into an array and then map it and return the display of each letter
     const letterElements = currentWord.split('').map((letter, index) => {
         return (
-            <span key={index}>{letter.toUpperCase()}</span>
+            <span key={index}>{guessedLetters.includes(letter) && letter.toUpperCase()}</span>
         )
     })
 
@@ -54,7 +74,7 @@ export default function AssemblyEndgame() {
         const isGuessed = guessedLetters.includes(letter)
         const isCorrect = isGuessed && currentWord.includes(letter)
         const isWrong = isGuessed && !currentWord.includes(letter)
-        
+
         // using the clsx dependency to make conditionals easier
         const className = clsx({
             correct: isCorrect,
