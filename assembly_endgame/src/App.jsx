@@ -59,7 +59,7 @@ export default function AssemblyEndgame() {
         
     }
 
-    console.log(guessedLetters)
+    
 
 
 
