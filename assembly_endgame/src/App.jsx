@@ -1,11 +1,12 @@
 import React from "react"
 import { languages } from "./languages.js"
+import { clsx } from 'clsx';
 
 
 
 export default function AssemblyEndgame() {
 
-    
+
     // map over the array and apply correct styling
     const languageArray = languages.map((language) => {
 
@@ -33,14 +34,30 @@ export default function AssemblyEndgame() {
 
     // create the keyboard and show it
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
-    const keyboardElements = alphabet.split('').map(letter => (
-        
-        <button
-        onClick={() => addGuessedLetter(letter)} // ΤΑΚΕ Α GOOD LOOK AT THIS!
-        key={letter}>
-            {letter.toUpperCase()}
-        </button>
-    ))
+    const keyboardElements = alphabet.split('').map(letter => {
+
+        // Creating the logic where when a keyboard buttin is clicked, it conditionally turns it green or red if it belongs to the 
+        // current word or not
+        const isGuessed = guessedLetters.includes(letter)
+        const isCorrect = isGuessed && currentWord.includes(letter)
+        const isWrong = isGuessed && !currentWord.includes(letter)
+
+
+        const styles = {
+            backgroundColor: currentWord.includes(letter) ? 'green' : 'red'
+        }
+
+        return (
+
+            <button
+                onClick={() => addGuessedLetter(letter)} // ΤΑΚΕ Α GOOD LOOK AT THIS!
+                className={ }
+                key={letter}
+            >
+                {letter.toUpperCase()}
+            </button>
+        )
+    })
 
 
 
@@ -49,17 +66,15 @@ export default function AssemblyEndgame() {
 
     // OnClick function that gets called by pressing the button with a callback function (see above)
     function addGuessedLetter(letter) {
-        setGuessedLetters(prevLetters => 
-           
-           // If the letter has already been clicked and belongs in the array, dont add it.
+        setGuessedLetters(prevLetters =>
+
+            // If the letter has already been clicked and belongs in the array, dont add it.
             prevLetters.includes(letter) ?
                 prevLetters :
                 [...prevLetters, letter])
-
-        
     }
 
-    
+
 
 
 
