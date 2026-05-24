@@ -24,6 +24,19 @@ export default function AssemblyEndgame() {
     // Set the state for the current word
     const [currentWord, setCurrentWord] = React.useState("react")
 
+    // Set the state for the guessed letters
+    const [guessedLetters, setGuessedLetters] = React.useState([])
+
+    // OnClick function that gets called by pressing the button with a callback function (see above)
+    function addGuessedLetter(letter) {
+        setGuessedLetters(prevLetters =>
+
+            // If the letter has already been clicked and belongs in the array, dont add it.
+            prevLetters.includes(letter) ?
+                prevLetters :
+                [...prevLetters, letter])
+    }
+
     // transform the string into an array and then map it and return the display of each letter
     const letterElements = currentWord.split('').map((letter, index) => {
         return (
@@ -41,38 +54,28 @@ export default function AssemblyEndgame() {
         const isGuessed = guessedLetters.includes(letter)
         const isCorrect = isGuessed && currentWord.includes(letter)
         const isWrong = isGuessed && !currentWord.includes(letter)
+        
+        // using the clsx dependency to make conditionals easier
+        const className = clsx({
+            correct: isCorrect,
+            wrong: isWrong
+        })
 
-
-        const styles = {
-            backgroundColor: currentWord.includes(letter) ? 'green' : 'red'
-        }
+        // const styles = {
+        //     backgroundColor: currentWord.includes(letter) ? 'green' : 'red'
+        // }
 
         return (
 
             <button
                 onClick={() => addGuessedLetter(letter)} // ΤΑΚΕ Α GOOD LOOK AT THIS!
-                className={ }
+                className={className}
                 key={letter}
             >
                 {letter.toUpperCase()}
             </button>
         )
     })
-
-
-
-    // Set the state for the guessed letters
-    const [guessedLetters, setGuessedLetters] = React.useState([])
-
-    // OnClick function that gets called by pressing the button with a callback function (see above)
-    function addGuessedLetter(letter) {
-        setGuessedLetters(prevLetters =>
-
-            // If the letter has already been clicked and belongs in the array, dont add it.
-            prevLetters.includes(letter) ?
-                prevLetters :
-                [...prevLetters, letter])
-    }
 
 
 
