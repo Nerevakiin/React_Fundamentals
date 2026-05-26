@@ -17,15 +17,29 @@ export default function AssemblyEndgame() {
 
 
 
-
-    // ============ Static values ============
-
-    
     // ============ Derived values ============
     const wrongGuessCount = guessedLetters.filter((letter => !currentWord.includes(letter))).length
     console.log(wrongGuessCount)
 
+    // Handle when the game is over
+    const isGameWon = currentWord.split('').every(letter => guessedLetters.includes(letter))
+    const isGameLost = wrongGuessCount >= languages.length - 1
+    const isGameOver = isGameWon || isGameLost
 
+    /*  Another way of doing the above: 
+    
+        let isGmmeOver = false
+        if (((languageElements.length - 1) <=  wrongGuessCount) || letterElements.length === guessedLetters.length) {
+            console.log("game ended")
+            isGameOver = true
+        }
+    
+    */
+
+
+
+
+    // ============ Static values ============
     // map over the array and apply correct styling
     const languageArray = languages.map((language, index) => {
 
@@ -102,7 +116,6 @@ export default function AssemblyEndgame() {
 
 
 
-
     return (
         <main>
             <header>
@@ -126,7 +139,7 @@ export default function AssemblyEndgame() {
             <section className="keyboard">
                 {keyboardElements}
             </section>
-            <button className="new-game">New Game</button>
+            {isGameOver && <button className="new-game">New Game</button>}
         </main>
     )
 }
