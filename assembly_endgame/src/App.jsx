@@ -19,6 +19,8 @@ export default function AssemblyEndgame() {
 
 
     // ============ Static values ============
+
+    
     // ============ Derived values ============
     const wrongGuessCount = guessedLetters.filter((letter => !currentWord.includes(letter))).length
     console.log(wrongGuessCount)
