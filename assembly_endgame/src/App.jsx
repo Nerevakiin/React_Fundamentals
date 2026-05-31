@@ -114,7 +114,8 @@ export default function AssemblyEndgame() {
     })
 
 
-
+    // Conditionally add classes if game is won or lost
+    
 
     return (
         <main>
@@ -123,9 +124,27 @@ export default function AssemblyEndgame() {
                 <p>Guess the word within 8 attempts to keep the programming world safe from Assembly!</p>
             </header>
 
+            
             <section className="game-status">
-                <h2>You Win!</h2>
-                <p>Well done! 🎉</p>
+
+                { // Conditionally render the game is won or lost when the game is over
+                    isGameOver ? (
+                        isGameWon ? (
+                            <>
+                                <h2>You Win!</h2>
+                                <p>Well done! 🎉</p>
+                            </>
+                        ) : (
+                            <>
+                                <h2>You Lost!</h2>
+                                <p>Better start learning assembly boi!</p>
+                            </>
+                        )
+                    ) : null
+                }
+
+
+
             </section>
 
             <section className="language-list">
