@@ -105,6 +105,8 @@ export default function AssemblyEndgame() {
             <button
                 onClick={() => addGuessedLetter(letter)} // ΤΑΚΕ Α GOOD LOOK AT THIS!
                 className={className}
+                disabled={isGameOver}
+                aria-label={`Letter ${letter}`}
                 key={letter}
             >
                 {letter.toUpperCase()}
@@ -156,8 +158,6 @@ export default function AssemblyEndgame() {
                 renderGameStatus()// Conditionally render the game is won or lost when the game is over  
                 }
 
-
-
             </section>
 
             <section className="language-list">
@@ -166,6 +166,18 @@ export default function AssemblyEndgame() {
 
             <section className="word">
                 {letterElements}
+            </section>
+
+            <section
+                className="sr-only"
+                aria-live="polite"
+                role="status"
+                >
+                    <p> 
+                        Current word: {currentWord.split("").map(letter => 
+                            guessedLetters.includes(letter) ? letter + "." : "blank" // I have no idea what's happening here but it works
+                        ).join(" ")}
+                    </p>
             </section>
 
             <section className="keyboard">
