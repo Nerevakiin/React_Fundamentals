@@ -133,7 +133,7 @@ export default function AssemblyEndgame() {
                     <p>Well done! 🎉</p>
                 </>
             )
-        } 
+        }
         if (isGameLost) {
             return (
                 <>
@@ -151,11 +151,11 @@ export default function AssemblyEndgame() {
                 <p>Guess the word within 8 attempts to keep the programming world safe from Assembly!</p>
             </header>
 
-            
+
             <section className={gameOverClass}>
 
-                { 
-                renderGameStatus()// Conditionally render the game is won or lost when the game is over  
+                {
+                    renderGameStatus()// Conditionally render the game is won or lost when the game is over  
                 }
 
             </section>
@@ -168,16 +168,25 @@ export default function AssemblyEndgame() {
                 {letterElements}
             </section>
 
+
+            {/* Combined visually-hidden aria-live region for status updates */}
             <section
                 className="sr-only"
                 aria-live="polite"
                 role="status"
-                >
-                    <p> 
-                        Current word: {currentWord.split("").map(letter => 
-                            guessedLetters.includes(letter) ? letter + "." : "blank" // I have no idea what's happening here but it works
-                        ).join(" ")}
-                    </p>
+            >
+                <p>
+                    {currentWord.includes(lastGuessedLetter) ?
+                        `Correct! The letter ${lastGuessedLetter} is in the word.` :
+                        `Sorry, the letter ${lastGuessedLetter} is not in the word.`
+                    }
+                    You have {languages.length - 1} attempts left.
+                </p>
+                <p>
+                    Current word: {currentWord.split("").map(letter =>
+                        guessedLetters.includes(letter) ? letter + "." : "blank" // I have no idea what's happening here but it works
+                    ).join(" ")}
+                </p>
             </section>
 
             <section className="keyboard">

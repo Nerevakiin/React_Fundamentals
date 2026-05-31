@@ -1,3 +1,7 @@
+import { words } from './words.js'
+
+
+
 export function getFarewellText(language) {
     const options = [
         `Farewell, ${language}`,
