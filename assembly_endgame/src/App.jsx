@@ -115,7 +115,10 @@ export default function AssemblyEndgame() {
 
 
     // Conditionally add classes if game is won or lost
-    
+    const gameOverClass = clsx("game-status", {
+        won: isGameWon,
+        lost: isGameLost
+    })
 
     return (
         <main>
@@ -125,7 +128,7 @@ export default function AssemblyEndgame() {
             </header>
 
             
-            <section className="game-status">
+            <section className={gameOverClass}>
 
                 { // Conditionally render the game is won or lost when the game is over
                     isGameOver ? (

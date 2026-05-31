@@ -11,7 +11,7 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  
+  margin-top: 100px;
 }
 
 header {
@@ -27,11 +27,12 @@ header>h1 {
 header>p {
   font-size: 0.875rem;
   max-width: 350px;
+  margin-inline: auto;
 
 }
 
 section.game-status {
-  background-color: #10A95B;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,6 +40,16 @@ section.game-status {
   border-radius: 5px;
   margin-block: 30px;
 }
+
+section.game-status.won {
+  background-color: #10A95B;
+}
+
+section.game-status.lost {
+  background-color: #BA2A2A;
+}
+
+
 
 section.game-status>h2 {
   font-size: 1.25;
@@ -56,6 +67,7 @@ section.language-list {
   justify-content: center;
   max-width: 350px;
   margin-bottom: 36px;
+  margin-inline: auto;
 }
 
 span.language-element {
