@@ -19,22 +19,17 @@ export default function AssemblyEndgame() {
 
     // ============ Derived values ============
     const wrongGuessCount = guessedLetters.filter((letter => !currentWord.includes(letter))).length
-    console.log(wrongGuessCount)
 
     // Handle when the game is over
     const isGameWon = currentWord.split('').every(letter => guessedLetters.includes(letter))
     const isGameLost = wrongGuessCount >= languages.length - 1
     const isGameOver = isGameWon || isGameLost
 
-    /*  Another way of doing the above: 
-    
-        let isGmmeOver = false
-        if (((languageElements.length - 1) <=  wrongGuessCount) || letterElements.length === guessedLetters.length) {
-            console.log("game ended")
-            isGameOver = true
-        }
-    
-    */
+    // === Say farewell to lost languages ===
+    // 1. Get the last guessed letter
+    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+    // 2. Check if the last guessed letter wrong
+    const isLastGuessWrong = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
 
 
 
@@ -120,6 +115,27 @@ export default function AssemblyEndgame() {
         lost: isGameLost
     })
 
+    function renderGameStatus() {
+        if (!isGameOver) {
+            return null 
+        }
+        if (isGameWon) {
+            return (
+                <>
+                    <h2>You win!</h2>
+                    <p>Well done! 🎉</p>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <h2>Game over!</h2>
+                    <p>You lose! Better start learning Assembly boi</p>
+                </>
+            )
+        }
+    }
+
     return (
         <main>
             <header>
@@ -130,20 +146,8 @@ export default function AssemblyEndgame() {
             
             <section className={gameOverClass}>
 
-                { // Conditionally render the game is won or lost when the game is over
-                    isGameOver ? (
-                        isGameWon ? (
-                            <>
-                                <h2>You Win!</h2>
-                                <p>Well done! 🎉</p>
-                            </>
-                        ) : (
-                            <>
-                                <h2>You Lost!</h2>
-                                <p>Better start learning assembly boi!</p>
-                            </>
-                        )
-                    ) : null
+                { 
+                renderGameStatus()// Conditionally render the game is won or lost when the game is over  
                 }
 
 
