@@ -1,10 +1,14 @@
 import React from "react"
 import { languages } from "./languages.js"
 import { clsx } from 'clsx';
+import { getFarewellText } from './utils.js'
 
 
 
 export default function AssemblyEndgame() {
+
+
+    console.log(getFarewellText())
 
 
     // ============ State values ============
@@ -112,12 +116,13 @@ export default function AssemblyEndgame() {
     // Conditionally add classes if game is won or lost
     const gameOverClass = clsx("game-status", {
         won: isGameWon,
-        lost: isGameLost
+        lost: isGameLost,
+        farewell: !isGameOver && isLastGuessWrong
     })
 
     function renderGameStatus() {
-        if (!isGameOver) {
-            return null 
+        if (!isGameOver && isLastGuessWrong) {
+            return <p className="farewell-message">{getFarewellText(languages[wrongGuessCount - 1].name)}</p>
         }
         if (isGameWon) {
             return (
@@ -126,7 +131,8 @@ export default function AssemblyEndgame() {
                     <p>Well done! 🎉</p>
                 </>
             )
-        } else {
+        } 
+        if (isGameLost) {
             return (
                 <>
                     <h2>Game over!</h2>
