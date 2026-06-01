@@ -75,11 +75,13 @@ export default function AssemblyEndgame() {
     // transform the string into an array and then map it and return the display of each letter
     const letterElements = currentWord.split('').map((letter, index) => {
         const shouldRevealLetter = isGameLost || guessedLetters.includes(letter)
-        const letterClassName = clsx(isGameLost && !guessedLetters.includes(letter) && "reaveal")
+        const letterClassName = clsx(isGameLost && !guessedLetters.includes(letter) && "reveal")
 
 
         return (
-            <span className={letterClassName} key={index}>{shouldRevealLetter ? letter.toUpperCase() : ""}</span>
+            <span className={letterClassName} key={index}>
+                {shouldRevealLetter ? letter.toUpperCase() : ""}
+            </span>
         )
     })
 
