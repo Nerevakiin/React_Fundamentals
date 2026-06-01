@@ -1,7 +1,7 @@
 import React from "react"
 import { languages } from "./languages.js"
 import { clsx } from 'clsx';
-import { getFarewellText } from './utils.js'
+import { getFarewellText, getRandomWord } from './utils.js'
 
 
 
@@ -13,7 +13,7 @@ export default function AssemblyEndgame() {
 
     // ============ State values ============
     // Set the state for the current word
-    const [currentWord, setCurrentWord] = React.useState("react")
+    const [currentWord, setCurrentWord] = React.useState(() => getRandomWord())
 
     // Set the state for the guessed letters
     const [guessedLetters, setGuessedLetters] = React.useState([])
@@ -74,8 +74,12 @@ export default function AssemblyEndgame() {
 
     // transform the string into an array and then map it and return the display of each letter
     const letterElements = currentWord.split('').map((letter, index) => {
+        const shouldRevealLetter = isGameLost || guessedLetters.includes(letter)
+        const letterClassName = clsx(isGameLost && !guessedLetters.includes(letter) && "reaveal")
+
+
         return (
-            <span key={index}>{guessedLetters.includes(letter) && letter.toUpperCase()}</span>
+            <span className={letterClassName} key={index}>{shouldRevealLetter ? letter.toUpperCase() : ""}</span>
         )
     })
 
@@ -144,6 +148,15 @@ export default function AssemblyEndgame() {
         }
     }
 
+
+    // Handle the New Game functionality and button
+    function startNewGame() {
+        setCurrentWord(getRandomWord())
+        setGuessedLetters([])
+    }
+
+
+
     return (
         <main>
             <header>
@@ -192,7 +205,7 @@ export default function AssemblyEndgame() {
             <section className="keyboard">
                 {keyboardElements}
             </section>
-            {isGameOver && <button className="new-game">New Game</button>}
+            {isGameOver && <button className="new-game" onClick={startNewGame}>New Game</button>}
         </main>
     )
 }
