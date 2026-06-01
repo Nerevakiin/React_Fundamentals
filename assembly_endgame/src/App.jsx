@@ -2,14 +2,11 @@ import React from "react"
 import { languages } from "./languages.js"
 import { clsx } from 'clsx';
 import { getFarewellText, getRandomWord } from './utils.js'
+import Confetti from "react-confetti"
 
 
 
 export default function AssemblyEndgame() {
-
-
-    console.log(getFarewellText())
-
 
     // ============ State values ============
     // Set the state for the current word
@@ -161,6 +158,7 @@ export default function AssemblyEndgame() {
 
     return (
         <main>
+            {isGameWon && <Confetti />}
             <header>
                 <h1>Assembly: Endgame</h1>
                 <p>Guess the word within 8 attempts to keep the programming world safe from Assembly!</p>
