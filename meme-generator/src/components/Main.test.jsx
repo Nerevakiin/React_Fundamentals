@@ -23,6 +23,7 @@ describe("Main", () => {
     expect(screen.getByPlaceholderText("One does not simply")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("Walk into Mordor")).toBeInTheDocument()
     expect(screen.getByRole("button")).toBeInTheDocument()
+    expect(screen.getByText("Get a new meme image 🖼")).toBeInTheDocument()
 
   })
 
