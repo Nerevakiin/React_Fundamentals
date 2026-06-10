@@ -39,5 +39,21 @@ describe("user acceptance testing", () => {
 
     })
 
+    test("get a new meme image", async () => {
+
+        // Arrange
+        const user = userEvent.setup()
+        render(<App/>)
+        const getMemeBtn = screen.getByRole("button")
+
+        // Act
+        await user.click(getMemeBtn)
+
+
+        // Assert
+        
+
+    })
+
 })
 
