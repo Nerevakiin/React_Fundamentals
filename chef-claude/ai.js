@@ -1,63 +1,14 @@
-import Anthropic from '@anthropic-ai/sdk'
-// import {query} from '@qwen-code/sdk'
-
-
-
-const SYSTEM_PROMPT = `
-You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all 
-of those ingredients, You don't need to use every ingredient they mention in your recipe. The recipe can include additional
-ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it
-easier to render to a web page.
-`
-
-const anthropic = new Anthropic({
-    apiKey: import.meta.env.ANTHROPIC_API_KEY,
-    dangerouslyAllowBrowser: true // === IMPORTANT!! CHANGE THIS BEFORE DEPLOYING !! ===
-})
-
-
 export async function getRecipeFromChefClaude(ingredientsArr) {
-    const ingredientsString = ingredientsArr.join(", ")
-
-
-    const msg = await anthropic.messages.create({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: [
-            {role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!`},
-        ]
+    const res = await fetch('/api/recipe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ingredients: ingredientsArr })
     })
 
-    return msg.content[0].text 
+    if (!res.ok) {
+        throw new Error("Failed to fetch recipe")
+    }
 
+    const data = await res.json()
+    return data.recipe
 }
-
-
-// const qwen = new QWEN({
-//     apiKey: import.meta.env.VITE_QWEN_API_KEY,
-//     dangerouslyAllowBrowser: true 
-// })
-
-// export async function getRecipeFromQwen(ingredientsArr) {
-//     const ingredientsString = ingredientsArr.join(", ")
-
-//     try {
-        
-//         const response = query({
-//             prompt: SYSTEM_PROMPT,
-//             messages: [
-//                 {role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!`},
-//             ]
-
-//         })
-
-//         return response.content[0].text 
-
-
-//     } catch (err) {
-//         console.error(err.messages)
-//     }
-// }
-
-
