@@ -5,7 +5,8 @@ export default function Main() {
     const [meme, setMeme] = useState({
         topText: "One does not simply",
         bottomText: "Walk into Mordor",
-        imgUrl: "https://i.imgflip.com/1bij.jpg"
+        imgUrl: "https://i.imgflip.com/1bij.jpg",
+        imageAlt: "One Does Not Simply"
     })
 
     
@@ -55,6 +56,7 @@ export default function Main() {
                         name="topText"
                         onChange={handleChange}
                         value={meme.topText}
+                        
                     />
                 </label>
 
@@ -70,7 +72,7 @@ export default function Main() {
                 <button onClick={getRandomMeme}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
-                <img src={meme.imgUrl} />
+                <img src={meme.imgUrl} alt={meme.imageAlt} crossOrigin="anonymous" />
                 <span className="top">{meme.topText}</span>
                 <span className="bottom">{meme.bottomText}</span>
             </div>
