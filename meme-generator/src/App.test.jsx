@@ -51,7 +51,8 @@ describe("user acceptance testing", () => {
 
 
         // Assert
-        
+        const images = screen.getAllByRole('img')
+        expect(images[1].src).toBe("https://i.imgflip.com/1c1uej.jpg")
 
     })
 

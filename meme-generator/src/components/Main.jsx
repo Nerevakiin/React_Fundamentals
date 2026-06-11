@@ -5,7 +5,7 @@ export default function Main() {
     const [meme, setMeme] = useState({
         topText: "One does not simply",
         bottomText: "Walk into Mordor",
-        imgUrl: "http://i.imgflip.com/1bij.jpg"
+        imgUrl: "https://i.imgflip.com/1bij.jpg"
     })
 
     

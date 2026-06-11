@@ -3,7 +3,7 @@ import { afterEach, beforeAll, afterAll } from 'vitest'
 import { cleanup } from "@testing-library/react";
 
 import { setupServer } from 'msw/node'
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 
 
 // Prepare data
@@ -19,8 +19,8 @@ const memes = {
 
 // Define handlers using MSW
 export const restHandlers = [
-    rest.get('https://api.imgflip.com/get_memes', (req, res, ctx) => {
-        return res(ctx.json(memes))
+    http.get('https://api.imgflip.com/get_memes', () => {
+        return HttpResponse.json(memes)
     }),
 ]
 
